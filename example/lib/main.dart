@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'dart:typed_data';
 import 'dart:async';
-
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:blurhash/blurhash.dart';
 
@@ -12,31 +12,27 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
+  Uint8List imageDataBytes;
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    blurhashDecode();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
+  Future<void> blurhashDecode() async {
+    Uint8List _imageDataBytes;
+
     try {
-      platformVersion = await Blurhash.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      _imageDataBytes = await Blurhash.decode("LBAdAqof00WCqZj[PDay0.WB}pof", 32, 32);
+    } on PlatformException catch (e) {
+      print(e.message);
     }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
+      imageDataBytes = _imageDataBytes;
     });
   }
 
@@ -45,10 +41,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Blurhash example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: imageDataBytes != null
+              ? Image.memory(imageDataBytes, width: 256, fit: BoxFit.cover)
+              : Container(),
         ),
       ),
     );
