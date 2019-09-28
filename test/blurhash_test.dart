@@ -7,7 +7,9 @@ void main() {
 
   setUp(() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return '42';
+      if (methodCall.method == 'blurhashDecode') {
+        return null;
+      }
     });
   });
 
@@ -15,7 +17,8 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await Blurhash.platformVersion, '42');
+  test('blurhashDecode', () async {
+    var bytes = await Blurhash.decode("", 32, 32);
+    expect(bytes, null);
   });
 }
