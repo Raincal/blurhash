@@ -1,6 +1,6 @@
 name: blurhash
-description: Flutter plugin for BlurHash..
-version: 0.1.0
+description: A Flutter plugin for iOS and Android to decode a BlurHash string.
+version: 0.1.1
 author: Raincal <cyj94228@gmail.com>
 homepage: https://github.com/Raincal/blurhash
 

@@ -1,5 +1,7 @@
 # blurhash
 
+[![pub package](https://img.shields.io/pub/v/blurhash?style=flat-square)](https://pub.dartlang.org/packages/blurhash)
+
 A Flutter plugin for iOS and Android to decode a BlurHash string.
 
 ## Usage
