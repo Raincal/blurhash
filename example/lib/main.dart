@@ -1,8 +1,6 @@
-import 'dart:typed_data';
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:blurhash/blurhash.dart';
+
+import 'blurhash_image.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,28 +10,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Uint8List imageDataBytes;
+  List<String> blurHashList = [
+    "LEHV6nWB2yk8pyoJadR*.7kCMdnj",
+    "LGF5]+Yk^6#M@-5c,1J5@[or[Q6.",
+    "L6Pj0^i_.AyE_3t7t7R**0o#DgR4",
+    "LKO2?U%2Tw=w]~RBVZRi};RPxuwH"
+  ];
 
   @override
   void initState() {
     super.initState();
-    blurhashDecode();
-  }
-
-  Future<void> blurhashDecode() async {
-    Uint8List _imageDataBytes;
-
-    try {
-      _imageDataBytes = await Blurhash.decode("LBAdAqof00WCqZj[PDay0.WB}pof", 32, 32);
-    } on PlatformException catch (e) {
-      print(e.message);
-    }
-
-    if (!mounted) return;
-
-    setState(() {
-      imageDataBytes = _imageDataBytes;
-    });
   }
 
   @override
@@ -41,12 +27,27 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Blurhash example app'),
+          title: const Text('BlurHash example app'),
         ),
-        body: Center(
-          child: imageDataBytes != null
-              ? Image.memory(imageDataBytes, width: 256, fit: BoxFit.cover)
-              : Container(),
+        body: Padding(
+          padding: const EdgeInsets.all(8),
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 8,
+              crossAxisSpacing: 8,
+              childAspectRatio: 8 / 5,
+            ),
+            itemCount: blurHashList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                child: BlurHashImage(
+                  blurHash: blurHashList[index],
+                  image: "https://blurha.sh/assets/images/img${index + 1}.jpg",
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

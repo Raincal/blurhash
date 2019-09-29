@@ -4,6 +4,8 @@
 
 A Flutter plugin for iOS and Android to decode a BlurHash string.
 
+<img src="blurhash.png" width="300">
+
 ## Usage
 
 To use this plugin, add `blurhash` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
