@@ -4,7 +4,7 @@
 
 A Flutter plugin for iOS and Android to decode a BlurHash string.
 
-<img src="blurhash.png" width="300">
+<img src="blurhash.png" width="375">
 
 ## Usage
 

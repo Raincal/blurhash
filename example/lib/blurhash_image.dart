@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:blurhash/blurhash.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class BlurHashImage extends StatefulWidget {
   BlurHashImage(
@@ -50,12 +51,25 @@ class _BlurHashImageState extends State<BlurHashImage> {
   Widget build(BuildContext context) {
     return _imageDataBytes == null
         ? Container(width: widget.width, height: widget.height)
-        : FadeInImage.memoryNetwork(
-            placeholder: _imageDataBytes,
-            image: widget.image,
-            width: widget.width,
-            height: widget.height,
-            fit: widget.fit,
+        : Stack(
+            children: <Widget>[
+              FractionallySizedBox(
+                widthFactor: 1,
+                child: Image.memory(
+                  _imageDataBytes,
+                  width: widget.width,
+                  height: widget.height,
+                  fit: widget.fit,
+                ),
+              ),
+              FadeInImage.memoryNetwork(
+                placeholder: kTransparentImage,
+                image: widget.image,
+                width: widget.width,
+                height: widget.height,
+                fit: widget.fit,
+              )
+            ],
           );
   }
 }
