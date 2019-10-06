@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'blurhash'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Flutter plugin for BlurHash.'
   s.description      = <<-DESC
 Flutter plugin for BlurHash.

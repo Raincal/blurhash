@@ -1,3 +1,8 @@
+## 0.1.2
+
+* fix internet permission in release mode
+* rename blurhash to blurHash
+
 ## 0.1.1
 
 * Add badge
