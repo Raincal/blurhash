@@ -18,16 +18,16 @@ class BlurhashPlugin: MethodCallHandler {
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
-    if (call.method == "blurhashDecode") {
-      val blurhash = call.argument<String>("blurhash")!!
+    if (call.method == "blurHashDecode") {
+      val blurHash = call.argument<String>("blurHash")!!
       val width = call.argument<Int>("width")!!
       val height = call.argument<Int>("height")!!
       val punch = call.argument<Float>("punch")!!.toFloat()
 
-      val bitmap = BlurHashDecoder.decode(blurhash, width, height, punch)
+      val bitmap = BlurHashDecoder.decode(blurHash, width, height, punch)
 
       if (bitmap == null) {
-        result.error("INVALID_BLURHASH", "Failed to decode blurhash", null)
+        result.error("INVALID_BLURHASH", "Failed to decode BlurHash", null)
       }
 
       val stream = ByteArrayOutputStream()

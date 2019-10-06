@@ -10,7 +10,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<String> blurHashList = [
+  List<String> _blurHashList = [
     "LEHV6nWB2yk8pyoJadR*.7kCMdnj",
     "LGF5]+Yk^6#M@-5c,1J5@[or[Q6.",
     "L6Pj0^i_.AyE_3t7t7R**0o#DgR4",
@@ -38,11 +38,11 @@ class _MyAppState extends State<MyApp> {
               crossAxisSpacing: 8,
               childAspectRatio: 8 / 5,
             ),
-            itemCount: blurHashList.length,
+            itemCount: _blurHashList.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 child: BlurHashImage(
-                  blurHash: blurHashList[index],
+                  blurHash: _blurHashList[index],
                   image: "https://blurha.sh/assets/images/img${index + 1}.jpg",
                 ),
               );

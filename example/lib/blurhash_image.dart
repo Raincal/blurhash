@@ -37,7 +37,7 @@ class _BlurHashImageState extends State<BlurHashImage> {
     Uint8List imageDataBytes;
 
     try {
-      imageDataBytes = await Blurhash.decode(widget.blurHash, 32, 32);
+      imageDataBytes = await BlurHash.decode(widget.blurHash, 32, 32);
     } on PlatformException catch (e) {
       print(e.message);
     }
@@ -62,12 +62,15 @@ class _BlurHashImageState extends State<BlurHashImage> {
                   fit: widget.fit,
                 ),
               ),
-              FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage,
-                image: widget.image,
-                width: widget.width,
-                height: widget.height,
-                fit: widget.fit,
+              FractionallySizedBox(
+                widthFactor: 1,
+                child: FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: widget.image,
+                  width: widget.width,
+                  height: widget.height,
+                  fit: widget.fit,
+                ),
               )
             ],
           );

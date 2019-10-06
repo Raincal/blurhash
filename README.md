@@ -28,20 +28,20 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Uint8List imageDataBytes;
+  Uint8List _imageDataBytes;
 
   @override
   void initState() {
     super.initState();
-    blurhashDecode();
+    blurHashDecode();
   }
 
-  Future<void> blurhashDecode() async {
-    Uint8List _imageDataBytes;
+  Future<void> blurHashDecode() async {
+    Uint8List imageDataBytes;
 
     try {
-      // Decodes a blurhash string to bytes
-      _imageDataBytes = await Blurhash.decode("LBAdAqof00WCqZj[PDay0.WB}pof", 32, 32);
+      // Decodes a BlurHash string to bytes
+      imageDataBytes = await BlurHash.decode("LBAdAqof00WCqZj[PDay0.WB}pof", 32, 32);
     } on PlatformException catch (e) {
       print(e.message);
     }
@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      imageDataBytes = _imageDataBytes;
+      _imageDataBytes = imageDataBytes;
     });
   }
 
@@ -58,11 +58,11 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Blurhash example app'),
+          title: const Text('BlurHash example app'),
         ),
         body: Center(
-          child: imageDataBytes != null
-              ? Image.memory(imageDataBytes, width: 256, fit: BoxFit.cover)
+          child: _imageDataBytes != null
+              ? Image.memory(_imageDataBytes, width: 256, fit: BoxFit.cover)
               : Container(),
         ),
       ),
