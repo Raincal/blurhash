@@ -18,7 +18,7 @@ public class SwiftBlurhashPlugin: NSObject, FlutterPlugin {
 
       let blurImage = UIImage(blurHash: blurHash, size: CGSize(width: width, height: height), punch: punch)
       if blurImage != nil {
-        result(UIImagePNGRepresentation(blurImage!))
+        result(blurImage!.pngData())
       } else {
         result(FlutterError(code: "INVALID_BLURHASH", message: "Failed to decode BlurHash", details: nil))
       }
