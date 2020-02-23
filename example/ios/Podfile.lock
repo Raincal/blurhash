@@ -14,9 +14,9 @@ EXTERNAL SOURCES:
     :path: ".symlinks/flutter/ios"
 
 SPEC CHECKSUMS:
-  blurhash: 02523bed784d91f8efc801b2db41d30d9d8ba8f6
+  blurhash: 84acbeea8839e88055fcb99b320c5ebf5f27ae3b
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
 
 PODFILE CHECKSUM: 10ae9c18d12c9ffc2275c9a159a3b1e281990db0
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4
