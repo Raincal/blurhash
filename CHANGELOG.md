@@ -1,3 +1,7 @@
+## 0.1.3
+
+* Update for more recent versions of Kotlin and Swift
+
 ## 0.1.2
 
 * fix internet permission in release mode
