@@ -1,3 +1,7 @@
+## 0.2.0
+
+* Support encoding
+
 ## 0.1.3
 
 * Update for more recent versions of Kotlin and Swift
