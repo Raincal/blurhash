@@ -1,6 +1,7 @@
 package com.raincal.blurhash
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import java.io.ByteArrayOutputStream
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -18,7 +19,16 @@ class BlurhashPlugin: MethodCallHandler {
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
-    if (call.method == "blurHashDecode") {
+    if (call.method == "blurHashEncode") {
+      val image = call.argument<ByteArray>("image")!!
+      val componentX = call.argument<Int>("componentX")!!
+      val componentY = call.argument<Int>("componentY")!!
+
+      var bitmap = BitmapFactory.decodeByteArray(image, 0, image.size)
+      val blurHash = BlurHashEncoder.encode(bitmap, componentX, componentY)
+
+      result.success(blurHash)
+    } else if (call.method == "blurHashDecode") {
       val blurHash = call.argument<String>("blurHash")!!
       val width = call.argument<Int>("width")!!
       val height = call.argument<Int>("height")!!

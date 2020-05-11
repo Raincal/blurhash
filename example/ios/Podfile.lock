@@ -5,18 +5,18 @@ PODS:
 
 DEPENDENCIES:
   - blurhash (from `.symlinks/plugins/blurhash/ios`)
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `Flutter`)
 
 EXTERNAL SOURCES:
   blurhash:
     :path: ".symlinks/plugins/blurhash/ios"
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: Flutter
 
 SPEC CHECKSUMS:
   blurhash: 84acbeea8839e88055fcb99b320c5ebf5f27ae3b
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
 
-PODFILE CHECKSUM: 10ae9c18d12c9ffc2275c9a159a3b1e281990db0
+PODFILE CHECKSUM: c34e2287a9ccaa606aeceab922830efb9a6ff69a
 
 COCOAPODS: 1.8.4
