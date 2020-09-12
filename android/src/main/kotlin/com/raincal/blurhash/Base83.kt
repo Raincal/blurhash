@@ -14,7 +14,7 @@ internal object Base83 {
         var exp = 1
         var i = 1
         while (i <= length) {
-            val digit = (value / exp % 83).toInt()
+            val digit = (value / exp % 83)
             buffer[offset + length - i] = CHAR_MAP[digit]
             i++
             exp *= 83

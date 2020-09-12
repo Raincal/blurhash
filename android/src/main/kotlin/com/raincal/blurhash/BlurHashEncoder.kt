@@ -3,7 +3,7 @@ package com.raincal.blurhash
 import android.graphics.Bitmap
 import com.raincal.blurhash.Base83.encode
 import com.raincal.blurhash.Utils.linearToSrgb
-import com.raincal.blurhash.Utils.signedPow2
+import com.raincal.blurhash.Utils.signedPow
 import com.raincal.blurhash.Utils.srgbToLinear
 import kotlin.math.*
 
@@ -30,19 +30,19 @@ object BlurHashEncoder {
     }
 
     private fun encodeDC(value: FloatArray): Int {
-        val r: Int = linearToSrgb(value[0])
-        val g: Int = linearToSrgb(value[1])
-        val b: Int = linearToSrgb(value[2])
+        val r = linearToSrgb(value[0])
+        val g = linearToSrgb(value[1])
+        val b = linearToSrgb(value[2])
         return (r shl 16) + (g shl 8) + b
     }
 
     private fun encodeAC(value: FloatArray, maximumValue: Float): Int {
-        val quantR = floor(max(0.0,
-                min(18.0, floor(signedPow2(value[0] / maximumValue) * 9 + 9.5))))
-        val quantG = floor(max(0.0,
-                min(18.0, floor(signedPow2(value[1] / maximumValue) * 9 + 9.5))))
-        val quantB = floor(max(0.0,
-                min(18.0, floor(signedPow2(value[2] / maximumValue) * 9 + 9.5))))
+        val quantR = floor(max(0f,
+                min(18f, floor(signedPow(value[0] / maximumValue, 0.5f) * 9 + 9.5f))))
+        val quantG = floor(max(0f,
+                min(18f, floor(signedPow(value[1] / maximumValue, 0.5f) * 9 + 9.5f))))
+        val quantB = floor(max(0f,
+                min(18f, floor(signedPow(value[2] / maximumValue, 0.5f) * 9 + 9.5f))))
         return round(quantR * 19 * 19 + quantG * 19 + quantB).toInt()
     }
 
