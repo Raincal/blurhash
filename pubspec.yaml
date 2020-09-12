@@ -1,6 +1,6 @@
 name: blurhash
 description: A very compact representation of a placeholder for an image.
-version: 0.2.0
+version: 0.2.1
 homepage: https://github.com/Raincal/blurhash
 
 environment:

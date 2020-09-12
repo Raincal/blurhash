@@ -1,3 +1,7 @@
+## 0.2.1
+
+* (decoder) Add useCache on Android
+
 ## 0.2.0
 
 * Support encoding
