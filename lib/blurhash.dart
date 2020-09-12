@@ -17,13 +17,14 @@ class BlurHash {
   }
 
   static Future<Uint8List> decode(String blurHash, int width, int height,
-      {double punch = 1.0}) async {
-    final Uint8List pixels = await _channel.invokeMethod(
-        'blurHashDecode', <String, dynamic>{
+      {double punch = 1.0, bool useCache = true}) async {
+    final Uint8List pixels =
+        await _channel.invokeMethod('blurHashDecode', <String, dynamic>{
       "blurHash": blurHash,
       "width": width,
       "height": height,
-      "punch": punch
+      "punch": punch,
+      "useCache": useCache
     });
     return pixels;
   }

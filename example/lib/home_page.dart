@@ -29,7 +29,8 @@ class HomePageState extends State<HomePage> {
   void blurHashDecode() async {
     Uint8List imageDataBytes;
     try {
-      imageDataBytes = await BlurHash.decode(_blurHashController.text, 20, 12);
+      imageDataBytes = await BlurHash.decode(_blurHashController.text, 20, 12,
+          useCache: false);
     } on PlatformException catch (e) {
       print(e.message);
     }

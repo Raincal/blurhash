@@ -33,8 +33,9 @@ class BlurhashPlugin: MethodCallHandler {
       val width = call.argument<Int>("width")!!
       val height = call.argument<Int>("height")!!
       val punch = call.argument<Float>("punch")!!.toFloat()
+      val useCache = call.argument<Boolean>("useCache")!!
 
-      val bitmap = BlurHashDecoder.decode(blurHash, width, height, punch)
+      val bitmap = BlurHashDecoder.decode(blurHash, width, height, punch, useCache)
 
       if (bitmap == null) {
         result.error("INVALID_BLURHASH", "Failed to decode BlurHash", null)
