@@ -1,3 +1,8 @@
+## 0.3.0-nullsafety.0
+
+* Migrate to new plugins API
+* Support null-safety
+
 ## 0.2.1
 
 * (decoder) Add useCache on Android
