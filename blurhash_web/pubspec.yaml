@@ -1,8 +1,8 @@
 name: blurhash_web
-description: The web implementation of firebase_core
-homepage: https://github.com/Raincal/blurhash/tree/master/blurhash/blurhash_web
-repository: https://github.com/Raincal/blurhash/tree/master/blurhash/blurhash_web
-version: 0.3.0-dev
+description: The web implementation of blurhash
+homepage: https://github.com/Raincal/blurhash/tree/master/blurhash_web
+repository: https://github.com/Raincal/blurhash/tree/master/blurhash_web
+version: 1.0.0
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

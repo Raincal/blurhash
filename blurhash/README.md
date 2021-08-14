@@ -4,6 +4,12 @@
 
 Compact representation of a placeholder for an image.
 
+### Platform Support
+
+| Android | iOS | Web |
+|:-------:|:---:|:---:|
+|    ✔️   |  ✔️  |  ✔️  |
+
 <img src="https://raw.githubusercontent.com/Raincal/blurhash/master/blurhash.png" width="375">
 
 ## Usage
