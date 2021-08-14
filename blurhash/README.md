@@ -26,7 +26,7 @@ void blurHashEncode() async {
 }
 
 void blurHashDecode() async {
-  Uint8List imageDataBytes;
+  Uint8List? imageDataBytes;
   try {
     imageDataBytes = await BlurHash.decode(blurhash, 20, 12);
   } on PlatformException catch (e) {

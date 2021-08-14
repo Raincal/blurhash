@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  Uint8List _imageDataBytes;
+  Uint8List? _imageDataBytes;
   TextEditingController _blurHashController =
       TextEditingController(text: "LEHV6nWB2yk8pyo0adR*.7kCMdnj");
 
@@ -27,7 +27,7 @@ class HomePageState extends State<HomePage> {
   }
 
   void blurHashDecode() async {
-    Uint8List imageDataBytes;
+    Uint8List? imageDataBytes;
     try {
       imageDataBytes = await BlurHash.decode(_blurHashController.text, 20, 12,
           useCache: false);
@@ -112,7 +112,7 @@ class HomePageState extends State<HomePage> {
                   : FractionallySizedBox(
                       widthFactor: 1,
                       child: Image.memory(
-                        _imageDataBytes,
+                        _imageDataBytes!,
                         fit: BoxFit.cover,
                       ),
                     ),
