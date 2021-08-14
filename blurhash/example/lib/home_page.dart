@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  Uint8List _imageDataBytes;
+  Uint8List? _imageDataBytes;
   TextEditingController _blurHashController =
       TextEditingController(text: "LEHV6nWB2yk8pyo0adR*.7kCMdnj");
 
@@ -27,7 +27,7 @@ class HomePageState extends State<HomePage> {
   }
 
   void blurHashDecode() async {
-    Uint8List imageDataBytes;
+    Uint8List? imageDataBytes;
     try {
       imageDataBytes = await BlurHash.decode(_blurHashController.text, 20, 12,
           useCache: false);
@@ -42,6 +42,16 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+      backgroundColor: Colors.blue,
+      onSurface: Colors.blue[700],
+      primary: Colors.white,
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(2.0)),
+      ),
+    );
+
     return ListView(
       children: [
         Padding(
@@ -52,60 +62,42 @@ class HomePageState extends State<HomePage> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 16.0),
-              child: Wrap(spacing: 16.0, children: [
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+              child: Wrap(spacing: 16.0, runSpacing: 8.0, children: [
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Decode"),
                   onPressed: blurHashDecode,
                 ),
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Encode1"),
                   onPressed: () {
                     blurHashEncode(1);
                   },
                 ),
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Encode2"),
                   onPressed: () {
                     blurHashEncode(2);
                   },
                 ),
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Encode3"),
                   onPressed: () {
                     blurHashEncode(3);
                   },
                 ),
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Encode4"),
                   onPressed: () {
                     blurHashEncode(4);
                   },
                 ),
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Encode5"),
                   onPressed: () {
                     blurHashEncode(5);
@@ -120,7 +112,7 @@ class HomePageState extends State<HomePage> {
                   : FractionallySizedBox(
                       widthFactor: 1,
                       child: Image.memory(
-                        _imageDataBytes,
+                        _imageDataBytes!,
                         fit: BoxFit.cover,
                       ),
                     ),

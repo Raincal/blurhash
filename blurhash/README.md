@@ -4,6 +4,12 @@
 
 Compact representation of a placeholder for an image.
 
+### Platform Support
+
+| Android | iOS | Web |
+|:-------:|:---:|:---:|
+|    ✔️   |  ✔️  |  ✔️  |
+
 <img src="https://raw.githubusercontent.com/Raincal/blurhash/master/blurhash.png" width="375">
 
 ## Usage
@@ -20,7 +26,7 @@ void blurHashEncode() async {
 }
 
 void blurHashDecode() async {
-  Uint8List imageDataBytes;
+  Uint8List? imageDataBytes;
   try {
     imageDataBytes = await BlurHash.decode(blurhash, 20, 12);
   } on PlatformException catch (e) {

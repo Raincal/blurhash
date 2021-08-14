@@ -7,9 +7,9 @@ import 'package:transparent_image/transparent_image.dart';
 
 class BlurHashImage extends StatefulWidget {
   BlurHashImage(
-      {Key key,
-      @required this.blurHash,
-      @required this.image,
+      {Key? key,
+      required this.blurHash,
+      required this.image,
       this.width,
       this.height,
       this.fit = BoxFit.cover})
@@ -17,15 +17,15 @@ class BlurHashImage extends StatefulWidget {
 
   final String blurHash;
   final String image;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final BoxFit fit;
 
   _BlurHashImageState createState() => _BlurHashImageState();
 }
 
 class _BlurHashImageState extends State<BlurHashImage> {
-  Uint8List _imageDataBytes;
+  Uint8List? _imageDataBytes;
 
   @override
   void initState() {
@@ -34,7 +34,7 @@ class _BlurHashImageState extends State<BlurHashImage> {
   }
 
   Future blurHashDecode() async {
-    Uint8List imageDataBytes;
+    Uint8List? imageDataBytes;
 
     try {
       imageDataBytes = await BlurHash.decode(widget.blurHash, 32, 32);
@@ -56,7 +56,7 @@ class _BlurHashImageState extends State<BlurHashImage> {
               FractionallySizedBox(
                 widthFactor: 1,
                 child: Image.memory(
-                  _imageDataBytes,
+                  _imageDataBytes!,
                   width: widget.width,
                   height: widget.height,
                   fit: widget.fit,
