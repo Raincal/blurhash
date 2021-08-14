@@ -42,6 +42,16 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+      backgroundColor: Colors.blue,
+      onSurface: Colors.blue[700],
+      primary: Colors.white,
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(2.0)),
+      ),
+    );
+
     return ListView(
       children: [
         Padding(
@@ -52,60 +62,42 @@ class HomePageState extends State<HomePage> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 16.0),
-              child: Wrap(spacing: 16.0, children: [
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+              child: Wrap(spacing: 16.0, runSpacing: 8.0, children: [
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Decode"),
                   onPressed: blurHashDecode,
                 ),
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Encode1"),
                   onPressed: () {
                     blurHashEncode(1);
                   },
                 ),
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Encode2"),
                   onPressed: () {
                     blurHashEncode(2);
                   },
                 ),
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Encode3"),
                   onPressed: () {
                     blurHashEncode(3);
                   },
                 ),
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Encode4"),
                   onPressed: () {
                     blurHashEncode(4);
                   },
                 ),
-                FlatButton(
-                  color: Colors.blue,
-                  highlightColor: Colors.blue[700],
-                  colorBrightness: Brightness.dark,
-                  splashColor: Colors.grey,
+                TextButton(
+                  style: flatButtonStyle,
                   child: Text("Encode5"),
                   onPressed: () {
                     blurHashEncode(5);
