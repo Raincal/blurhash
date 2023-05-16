@@ -5,7 +5,7 @@ homepage: https://github.com/Raincal/blurhash/tree/master/blurhash
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.24.0"
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:
