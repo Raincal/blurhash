@@ -10,7 +10,7 @@ Compact representation of a placeholder for an image.
 |:-------:|:---:|:---:|
 |    ✔️   |  ✔️  |  ✔️  |
 
-<img src="https://raw.githubusercontent.com/Raincal/blurhash/master/blurhash/blurhash.png" width="375">
+<img src="https://raw.githubusercontent.com/Raincal/blurhash/master/blurhash.png" width="375">
 
 ## Usage
 
