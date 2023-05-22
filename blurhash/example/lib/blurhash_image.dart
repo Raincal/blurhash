@@ -1,12 +1,10 @@
-import 'dart:typed_data';
-
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:blurhash/blurhash.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class BlurHashImage extends StatefulWidget {
-  BlurHashImage(
+  const BlurHashImage(
       {Key? key,
       required this.blurHash,
       required this.image,
@@ -21,6 +19,7 @@ class BlurHashImage extends StatefulWidget {
   final double? height;
   final BoxFit fit;
 
+  @override
   _BlurHashImageState createState() => _BlurHashImageState();
 }
 
@@ -50,7 +49,7 @@ class _BlurHashImageState extends State<BlurHashImage> {
   @override
   Widget build(BuildContext context) {
     return _imageDataBytes == null
-        ? Container(width: widget.width, height: widget.height)
+        ? SizedBox(width: widget.width, height: widget.height)
         : Stack(
             children: <Widget>[
               FractionallySizedBox(

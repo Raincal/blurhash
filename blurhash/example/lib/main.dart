@@ -13,16 +13,16 @@ class MyApp extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            bottom: TabBar(
+            bottom: const TabBar(
               tabs: [
                 Tab(text: "Home"),
                 Tab(text: "BlurHash Image"),
               ],
             ),
-            title: Text('BlurHash Example'),
+            title: const Text('BlurHash Example'),
           ),
           body: TabBarView(
-            children: [HomePage(), BlurHashImagePage()],
+            children: [const HomePage(), BlurHashImagePage()],
           ),
         ),
       ),

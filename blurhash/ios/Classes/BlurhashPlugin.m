@@ -3,6 +3,6 @@
 
 @implementation BlurhashPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftBlurhashPlugin registerWithRegistrar:registrar];
+  [BlurhashPlugin registerWithRegistrar:registrar];
 }
 @end
