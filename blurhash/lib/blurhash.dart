@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'dart:typed_data';
 import 'package:flutter/services.dart';
 
 class BlurHash {
-  static const MethodChannel _channel = const MethodChannel('blurhash');
+  static const MethodChannel _channel = MethodChannel('blurhash');
 
   static Future<String> encode(
       Uint8List image, int componentX, int componentY) async {

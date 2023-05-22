@@ -1,16 +1,17 @@
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:blurhash/blurhash.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   HomePageState createState() => HomePageState();
 }
 
 class HomePageState extends State<HomePage> {
   Uint8List? _imageDataBytes;
-  TextEditingController _blurHashController =
+  final TextEditingController _blurHashController =
       TextEditingController(text: "LEHV6nWB2yk8pyo0adR*.7kCMdnj");
 
   @override
@@ -43,10 +44,10 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+      foregroundColor: Colors.white,
       backgroundColor: Colors.blue,
-      onSurface: Colors.blue[700],
-      primary: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      disabledForegroundColor: Colors.blue[700]?.withOpacity(0.38),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(2.0)),
       ),
@@ -61,44 +62,44 @@ class HomePageState extends State<HomePage> {
               controller: _blurHashController,
             ),
             Padding(
-              padding: EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.only(top: 16.0),
               child: Wrap(spacing: 16.0, runSpacing: 8.0, children: [
                 TextButton(
                   style: flatButtonStyle,
-                  child: Text("Decode"),
                   onPressed: blurHashDecode,
+                  child: const Text("Decode"),
                 ),
                 TextButton(
                   style: flatButtonStyle,
-                  child: Text("Encode1"),
+                  child: const Text("Encode1"),
                   onPressed: () {
                     blurHashEncode(1);
                   },
                 ),
                 TextButton(
                   style: flatButtonStyle,
-                  child: Text("Encode2"),
+                  child: const Text("Encode2"),
                   onPressed: () {
                     blurHashEncode(2);
                   },
                 ),
                 TextButton(
                   style: flatButtonStyle,
-                  child: Text("Encode3"),
+                  child: const Text("Encode3"),
                   onPressed: () {
                     blurHashEncode(3);
                   },
                 ),
                 TextButton(
                   style: flatButtonStyle,
-                  child: Text("Encode4"),
+                  child: const Text("Encode4"),
                   onPressed: () {
                     blurHashEncode(4);
                   },
                 ),
                 TextButton(
                   style: flatButtonStyle,
-                  child: Text("Encode5"),
+                  child: const Text("Encode5"),
                   onPressed: () {
                     blurHashEncode(5);
                   },
@@ -106,7 +107,7 @@ class HomePageState extends State<HomePage> {
               ]),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.only(top: 16.0),
               child: _imageDataBytes == null
                   ? Container()
                   : FractionallySizedBox(

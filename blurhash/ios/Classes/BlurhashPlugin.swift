@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
 
-public class SwiftBlurhashPlugin: NSObject, FlutterPlugin {
+public class BlurhashPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "blurhash", binaryMessenger: registrar.messenger())
-    let instance = SwiftBlurhashPlugin()
+    let instance = BlurhashPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
