@@ -12,8 +12,8 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  blurhash_dart: ^1.0.2
-  image: ^4.0.17
+  blurhash_dart: ^1.2.0
+  image: ^4.0.0
 
 dev_dependencies:
   flutter_test:
