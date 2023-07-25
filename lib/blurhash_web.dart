@@ -4,37 +4,30 @@ import 'package:image/image.dart' as img;
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-class BlurhashWeb {
+import 'package:blurhash/blurhash_platform_interface.dart';
+
+/// A web implementation of the BlurHashPlatform of the BlurHash plugin.
+class BlurhashWeb extends BlurHashPlatform {
+  /// Constructs a BlurhashWeb
+  BlurhashWeb();
+
   static void registerWith(Registrar registrar) {
-    final MethodChannel channel = MethodChannel(
-        'blurhash', const StandardMethodCodec(), registrar.messenger);
-    final BlurhashWeb instance = BlurhashWeb();
-    channel.setMethodCallHandler(instance.handleMethodCall);
+    BlurHashPlatform.instance = BlurhashWeb();
   }
 
-  Future<dynamic> handleMethodCall(MethodCall call) async {
-    switch (call.method) {
-      case 'blurHashEncode':
-        final Uint8List imageData = call.arguments['image'];
-        final int componentX = call.arguments['componentX'];
-        final int componentY = call.arguments['componentY'];
-        final image = img.decodeImage(imageData);
-        BlurHash blurhash =
-            BlurHash.encode(image!, numCompX: componentX, numCompY: componentY);
-        return blurhash.hash;
-      case 'blurHashDecode':
-        final String hash = call.arguments['blurHash'];
-        final int width = call.arguments['width'];
-        final int height = call.arguments['height'];
-        final double punch = call.arguments['punch'];
-        BlurHash blurHash = BlurHash.decode(hash, punch: punch);
-        img.Image image = blurHash.toImage(width, height);
-        return Uint8List.fromList(img.encodeJpg(image));
-      default:
-        throw PlatformException(
-            code: 'Unimplemented',
-            details: "The blurhash plugin for web doesn't implement "
-                "the method '${call.method}'");
-    }
+  @override
+  Future<String> encode(Uint8List image, int componentX, int componentY) async {
+    final imageData = img.decodeImage(image);
+    BlurHash blurhash =
+        BlurHash.encode(imageData!, numCompX: componentX, numCompY: componentY);
+    return blurhash.hash;
+  }
+
+  @override
+  Future<Uint8List?> decode(String blurHash, int width, int height,
+      {double punch = 1.0, bool useCache = true}) async {
+    BlurHash brhash = BlurHash.decode(blurHash, punch: punch);
+    img.Image image = brhash.toImage(width, height);
+    return Uint8List.fromList(img.encodeJpg(image));
   }
 }

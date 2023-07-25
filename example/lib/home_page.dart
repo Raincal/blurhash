@@ -11,6 +11,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   Uint8List? _imageDataBytes;
+  final blurHash = BlurHash();
   final TextEditingController _blurHashController =
       TextEditingController(text: "LEHV6nWB2yk8pyo0adR*.7kCMdnj");
 
@@ -23,17 +24,17 @@ class HomePageState extends State<HomePage> {
   void blurHashEncode(int index) async {
     ByteData bytes = await rootBundle.load("images/img$index.jpg");
     Uint8List pixels = bytes.buffer.asUint8List();
-    var hash = await BlurHash.encode(pixels, 4, 3);
+    var hash = await blurHash.encode(pixels, 4, 3);
     _blurHashController.text = hash;
   }
 
   void blurHashDecode() async {
     Uint8List? imageDataBytes;
     try {
-      imageDataBytes = await BlurHash.decode(_blurHashController.text, 20, 12,
+      imageDataBytes = await blurHash.decode(_blurHashController.text, 20, 12,
           useCache: false);
     } on PlatformException catch (e) {
-      print(e.message);
+      throw Exception(e.message);
     }
 
     setState(() {

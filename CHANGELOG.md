@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Bump to most recent Flutter version(3.x)
+
 ## 1.0.0
 
 * Support web
