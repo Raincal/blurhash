@@ -25,7 +25,6 @@ class BlurHashImage extends StatefulWidget {
 
 class _BlurHashImageState extends State<BlurHashImage> {
   Uint8List? _imageDataBytes;
-  final blurHash = BlurHash();
 
   @override
   void initState() {
@@ -37,7 +36,7 @@ class _BlurHashImageState extends State<BlurHashImage> {
     Uint8List? imageDataBytes;
 
     try {
-      imageDataBytes = await blurHash.decode(widget.blurHash, 32, 32);
+      imageDataBytes = await BlurHash.decode(widget.blurHash, 32, 32);
     } on PlatformException catch (e) {
       throw Exception(e.message);
     }

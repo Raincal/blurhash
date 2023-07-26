@@ -19,18 +19,16 @@ To use this plugin, add `blurhash` as a [dependency in your pubspec.yaml file](h
 ### Example
 
 ```dart
-final blurHash = BlurHash();
-
 void blurHashEncode() async {
   ByteData bytes = await rootBundle.load("image.jpg");
   Uint8List pixels = bytes.buffer.asUint8List();
-  var blurHash = await blurHash.encode(pixels, 4, 3);
+  var blurHash = await BlurHash.encode(pixels, 4, 3);
 }
 
 void blurHashDecode() async {
   Uint8List? imageDataBytes;
   try {
-    imageDataBytes = await blurHash.decode(blurhash, 20, 12);
+    imageDataBytes = await BlurHash.decode(blurhash, 20, 12);
   } on PlatformException catch (e) {
     throw Exception(e.message);
   }

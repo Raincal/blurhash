@@ -20,7 +20,6 @@ class MockBlurHashPlatform
 
 void main() {
   final BlurHashPlatform initialPlatform = BlurHashPlatform.instance;
-  BlurHash blurHash = BlurHash();
   MockBlurHashPlatform fakePlatform = MockBlurHashPlatform();
   BlurHashPlatform.instance = fakePlatform;
 
@@ -29,10 +28,10 @@ void main() {
   });
 
   test('blurHashEncode', () async {
-    expect(await blurHash.encode(Uint8List(0), 32, 32), '');
+    expect(await BlurHash.encode(Uint8List(0), 32, 32), '');
   });
 
   test('blurHashDecode', () async {
-    expect(await blurHash.decode("", 32, 32), []);
+    expect(await BlurHash.decode("", 32, 32), []);
   });
 }
