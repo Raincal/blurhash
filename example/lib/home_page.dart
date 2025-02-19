@@ -11,8 +11,9 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   Uint8List? _imageDataBytes;
-  final TextEditingController _blurHashController =
-      TextEditingController(text: "LEHV6nWB2yk8pyo0adR*.7kCMdnj");
+  final TextEditingController _blurHashController = TextEditingController(
+    text: "LEHV6nWB2yk8pyo0adR*.7kCMdnj",
+  );
 
   @override
   void initState() {
@@ -30,8 +31,12 @@ class HomePageState extends State<HomePage> {
   void blurHashDecode() async {
     Uint8List? imageDataBytes;
     try {
-      imageDataBytes = await BlurHash.decode(_blurHashController.text, 20, 12,
-          useCache: false);
+      imageDataBytes = await BlurHash.decode(
+        _blurHashController.text,
+        20,
+        12,
+        useCache: false,
+      );
     } on PlatformException catch (e) {
       throw Exception(e.message);
     }
@@ -46,7 +51,7 @@ class HomePageState extends State<HomePage> {
     final ButtonStyle flatButtonStyle = TextButton.styleFrom(
       foregroundColor: Colors.white,
       backgroundColor: Colors.blue,
-      disabledForegroundColor: Colors.blue[700]?.withOpacity(0.38),
+      disabledForegroundColor: Colors.blue[700]?.withAlpha(97),
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(2.0)),
@@ -57,69 +62,74 @@ class HomePageState extends State<HomePage> {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(children: [
-            TextField(
-              controller: _blurHashController,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Wrap(spacing: 16.0, runSpacing: 8.0, children: [
-                TextButton(
-                  style: flatButtonStyle,
-                  onPressed: blurHashDecode,
-                  child: const Text("Decode"),
-                ),
-                TextButton(
-                  style: flatButtonStyle,
-                  child: const Text("Encode1"),
-                  onPressed: () {
-                    blurHashEncode(1);
-                  },
-                ),
-                TextButton(
-                  style: flatButtonStyle,
-                  child: const Text("Encode2"),
-                  onPressed: () {
-                    blurHashEncode(2);
-                  },
-                ),
-                TextButton(
-                  style: flatButtonStyle,
-                  child: const Text("Encode3"),
-                  onPressed: () {
-                    blurHashEncode(3);
-                  },
-                ),
-                TextButton(
-                  style: flatButtonStyle,
-                  child: const Text("Encode4"),
-                  onPressed: () {
-                    blurHashEncode(4);
-                  },
-                ),
-                TextButton(
-                  style: flatButtonStyle,
-                  child: const Text("Encode5"),
-                  onPressed: () {
-                    blurHashEncode(5);
-                  },
-                ),
-              ]),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: _imageDataBytes == null
-                  ? Container()
-                  : FractionallySizedBox(
-                      widthFactor: 1,
-                      child: Image.memory(
-                        _imageDataBytes!,
-                        fit: BoxFit.cover,
-                      ),
+          child: Column(
+            children: [
+              TextField(controller: _blurHashController),
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Wrap(
+                  spacing: 16.0,
+                  runSpacing: 8.0,
+                  children: [
+                    TextButton(
+                      style: flatButtonStyle,
+                      onPressed: blurHashDecode,
+                      child: const Text("Decode"),
                     ),
-            ),
-          ]),
-        )
+                    TextButton(
+                      style: flatButtonStyle,
+                      child: const Text("Encode1"),
+                      onPressed: () {
+                        blurHashEncode(1);
+                      },
+                    ),
+                    TextButton(
+                      style: flatButtonStyle,
+                      child: const Text("Encode2"),
+                      onPressed: () {
+                        blurHashEncode(2);
+                      },
+                    ),
+                    TextButton(
+                      style: flatButtonStyle,
+                      child: const Text("Encode3"),
+                      onPressed: () {
+                        blurHashEncode(3);
+                      },
+                    ),
+                    TextButton(
+                      style: flatButtonStyle,
+                      child: const Text("Encode4"),
+                      onPressed: () {
+                        blurHashEncode(4);
+                      },
+                    ),
+                    TextButton(
+                      style: flatButtonStyle,
+                      child: const Text("Encode5"),
+                      onPressed: () {
+                        blurHashEncode(5);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child:
+                    _imageDataBytes == null
+                        ? Container()
+                        : FractionallySizedBox(
+                          widthFactor: 1,
+                          child: Image.memory(
+                            _imageDataBytes!,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
