@@ -1,3 +1,8 @@
+## 1.2.0
+
+* fix build error on Flutter 3.29.0
+* fix namespace issue on android 34
+
 ## 1.1.1
 
 * Add missing `static` keyword
